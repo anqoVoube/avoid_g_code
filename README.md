@@ -1,5 +1,5 @@
 # Avoid spaghetti code in Django
-### Easily turn your apps into proper directories
+### Easily turn your future HUGE spaghetti code into pieces
 
 ## Installation
 
