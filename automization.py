@@ -1,19 +1,21 @@
 import os
 
-def main():
-    os.system('docker-compose build')
-    os.system('docker-compose run web django-admin startproject config .')
-    os.system('sudo chmod -R 777 *')
-    which_programs()
 
-def which_programs():
+def main():
+    service_name = input("Type the name of service in docker-compose: ")
+    os.system('docker-compose build')
+    os.system(f'docker-compose run {service_name} django-admin startproject config .')
+    os.system('sudo chmod -R 777 *')
+    which_programs(service_name)
+
+def which_programs(service_name):
     list_of_apps = [app for app in input("Type your apps (Example: user client cart): ").split() if app != "end!"]
     os.system('mkdir apps')
     for app in list_of_apps:
         os.system('cd apps && mkdir {}'.format(app))
     os.system('sudo chmod -R 777 *')
     for app in list_of_apps:
-        os.system('docker-compose run web python3 manage.py startapp {} apps/{}'.format(str(app), str(app)))
+        os.system('docker-compose run {} python3 manage.py startapp {} apps/{}'.format(service_name, str(app), str(app)))
     settings_installed_apps(list_of_apps)
     create_folder_in_apps(list_of_apps)
 
@@ -111,5 +113,7 @@ class {}SerializerTest(TestCase):
 class {}ViewTest(TestCase):
     pass
 '''.format(str(app).capitalize()))
+
+
 if __name__ == "__main__":
     main()
