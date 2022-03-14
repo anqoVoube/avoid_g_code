@@ -115,5 +115,6 @@ class {}ViewTest(TestCase):
 '''.format(str(app).capitalize()))
 
 
+
 if __name__ == "__main__":
     main()
