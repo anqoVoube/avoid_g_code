@@ -1,5 +1,6 @@
 import os
 
+
 def main():
     os.system('docker-compose build')
     os.system('docker-compose run web django-admin startproject config .')
