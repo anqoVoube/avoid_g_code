@@ -9,7 +9,7 @@
 $ sudo python3 automization.py
 ```
 
-+Type the name of your apps you need with space (Example: user client end!)
++ Type the name of your apps you need with space (Example: user client end!)
 >Note that end! represents end of list of your applications, you can whether type it or type only your applications 
 <hr>
 
