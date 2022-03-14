@@ -7,7 +7,7 @@ def main():
     which_programs()
 
 def which_programs():
-    list_of_apps = [app for app in input("Type apps: ").split() if app != "end!"]
+    list_of_apps = [app for app in input("Type your apps (Example: user client cart): ").split() if app != "end!"]
     os.system('mkdir apps')
     for app in list_of_apps:
         os.system('cd apps && mkdir {}'.format(app))
