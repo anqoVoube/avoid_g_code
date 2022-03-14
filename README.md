@@ -13,7 +13,7 @@ $ sudo python3 automization.py
 >Note that end! represents end of list of your applications, you can whether type it or type only your applications 
 <hr>
 
-*If you have any questions related to the usage of this API, feel free to contact me:*
+*If you have any questions related to the usage of this program, feel free to contact me:*
 
 *Telegram: [@youngerwolf](https://t.me/youngerwolf "Contact me via telegram!")*
 
