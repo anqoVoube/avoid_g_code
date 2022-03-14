@@ -111,5 +111,7 @@ class {}SerializerTest(TestCase):
 class {}ViewTest(TestCase):
     pass
 '''.format(str(app).capitalize()))
+        
+        
 if __name__ == "__main__":
     main()
