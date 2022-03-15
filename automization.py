@@ -24,13 +24,26 @@ def settings_installed_apps(somelist):
     string = [f"\n\t'apps.{app}'," for app in somelist]
     another = "".join(string)
     another += "\n\t'rest_framework',"
+    database_changed = '''DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('POSTGRES_NAME'),
+        'USER': os.environ.get('POSTGRES_USER'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
+        'PORT': 5432,
+    }
+}'''
+    import_os = '''\nimport os'''
     with open('config/settings.py', 'r') as client:
         a = client.read()
 
     with open('config/settings.py', 'w') as client:
         from_letter = a.find("'django.contrib.staticfiles',")
+        database_correction = a.find("DATABASES")
+        from_pathlib = "from pathlib import Path"
+        first_from = a.find(from_pathlib)
         count = len("'django.contrib.staticfiles',")
-        client.write(a[0:from_letter + count] + another + a[from_letter + count:])
+        client.write(a[0:first_from + len(from_pathlib)] + import_os + a[first_from + len(from_pathlib):from_letter + count] + another + a[from_letter + count:database_correction] + database_changed + a[database_correction + 128:])
 
 def create_folder_in_apps(list_of_apps):
     for app in list_of_apps:
@@ -113,7 +126,6 @@ class {}SerializerTest(TestCase):
 class {}ViewTest(TestCase):
     pass
 '''.format(str(app).capitalize()))
-
 
 
 if __name__ == "__main__":
